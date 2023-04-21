@@ -13,7 +13,7 @@ class Pelicula extends BaseController
     public function index()
     {
 
-        session()->set('key','value');
+        session()->set('key', 'value');
         $peliculaModel = new PeliculaModel();
 
         //devuelbe todos los campos  de la base de datos 
@@ -30,7 +30,7 @@ class Pelicula extends BaseController
     public function show($id)
     {
 
-       
+
         $peliculaModel = new PeliculaModel();
 
         var_dump($peliculaModel->find($id));
@@ -38,17 +38,24 @@ class Pelicula extends BaseController
     }
     public function create()
     {
+
         $peliculaModel = new PeliculaModel();
-        $peliculaModel->insert([
-            'titulo' => $this->request->getPost('titulo'),
-            'descripcion' => $this->request->getPost('descripcion')
-        ]);
-         //with funcion para mensajes flash 
-         session()->setFlashdata('mensaje','Registro gestionado correctamente');
-      return redirect()->back();
-        // var_dump($this->request->getPost('titulo'));
+        if ($this->validate('peliculas')) {
+            $peliculaModel->insert([
+                'titulo' => $this->request->getPost('titulo'),
+                'descripcion' => $this->request->getPost('descripcion')
+            ]);
+            session()->setFlashdata('mensaje', 'Se Registro correctamente');
+            return redirect()->to('pelicula');
+        } else {
+            // var_dump($this->validator->listErrors());
+            session()->setFlashdata([
+                'validation' => $this->validator->listErrors()
+            ]);
+           // return redirect()->to('pelicula/new');
+           return redirect()->back()->withInput();
 
-
+        }
     }
     public function edit($id)
     {
@@ -58,25 +65,32 @@ class Pelicula extends BaseController
         echo view('pelicula/edit', [
             'pelicula' => $peliculaModel->find($id)
         ]);
-        var_dump( $peliculaModel->find($id));
+        var_dump($peliculaModel->find($id));
     }
     public function update($id)
     {
         $peliculaModel = new PeliculaModel();
-
-        $peliculaModel->update($id, [
-            'titulo' => $this->request->getPost('titulo'),
-            'descripcion' => $this->request->getPost('descripcion')
-        ]);
-        session()->setFlashdata('mensaje','Registro actualizado correctamente');
-        return redirect()->back();
+        if ($this->validate('peliculas')) {
+            $peliculaModel->update($id, [
+                'titulo' => $this->request->getPost('titulo'),
+                'descripcion' => $this->request->getPost('descripcion')
+            ]);
+            session()->setFlashdata('mensaje', 'Registro actualizado correctamente');
+            return redirect()->to('pelicula');
+        } else {
+            // var_dump($this->validator->listErrors());
+            session()->setFlashdata([
+                'validation' => $this->validator->listErrors()
+            ]);
+            return redirect()->back()->withInput();
+        }
     }
-    public function delete($id){
+    public function delete($id)
+    {
         $peliculaModel = new PeliculaModel();
         $peliculaModel->delete($id);
 
-        session()->setFlashdata('mensaje','Registro eliminado correctamente');
+        session()->setFlashdata('mensaje', 'Registro eliminado correctamente');
         return redirect()->back();
-
     }
 }

@@ -54,7 +54,7 @@ $routes->set404Override();
 //$routes->presenter('pelicula',['except'=>['index']]);
 //$routes->resource('pelicula',['namespace'=>'App\Controllers\Dashboard']);
 $routes->presenter('pelicula',['namespace'=>'App\Controllers\Dashboard']);
-$routes->presenter('medico',['namespace'=>'App\Controllers\Dashboard']);
+$routes->presenter('categoria',['namespace'=>'App\Controllers\Dashboard']);
 /*
  * --------------------------------------------------------------------
  * Additional Routing
