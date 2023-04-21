@@ -7,6 +7,6 @@
    
 </head>
 <body>
-    <title> <?php echo $categoria['titulo'] ?></title>
+    <title> <?php echo $categoria->titulo ?></title>
 </body>
 </html>

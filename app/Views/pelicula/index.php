@@ -31,15 +31,15 @@
             </tr>
             <?php foreach ($peliculas as $key => $p) { ?>
                 <tr>
-                <td><?php echo $p['id'] ?></td>
-                    <td><?php echo $p['titulo'] ?></td>
-                        <td><?php echo $p['descripcion'] ?></td>
+                <td><?php echo $p->id ?></td>
+                    <td><?php echo $p->titulo ?></td>
+                        <td><?php echo $p->descripcion ?></td>
                         <td>
-                            <a href="pelicula/show/<?php echo $p['id']  ?>">Show</a>
-                            <a href="pelicula/edit/<?php echo $p['id']  ?>">Edit</a>
-                            <a href="<?php  echo base_url("pelicula/delete/". $p['id']); ?>">Edit</a>
+                            <a href="pelicula/show/<?php echo $p->id  ?>">Show</a>
+                            <a href="pelicula/edit/<?php echo $p->id ?>">Edit</a>
+                            <a href="<?php  echo base_url("pelicula/delete/". $p->id); ?>">Edit</a>
                            
-                            <form action="<?php  echo base_url("pelicula/delete/". $p['id']); ?>">
+                            <form action="<?php  echo base_url("pelicula/delete/". $p->id); ?>">
                               <button type="submit">Delete </button>    
                            </form>
                         </td>

@@ -23,15 +23,15 @@
             </tr>
             <?php foreach ($categorias as $key => $p) { ?>
                 <tr>
-                <td><?php echo $p['id'] ?></td>
-                    <td><?php echo $p['titulo'] ?></td>
+                <td><?php echo $p->id ?></td>
+                    <td><?php echo $p->titulo?></td>
                        
                         <td>
-                            <a href="categoria/show/<?php echo $p['id']  ?>">Show</a>
-                            <a href="categoria/edit/<?php echo $p['id']  ?>">Edit</a>
-                            <a href="<?php  echo base_url("categoria/delete/". $p['id']); ?>">Edit</a>
+                            <a href="categoria/show/<?php echo $p->id ?>">Show</a>
+                            <a href="categoria/edit/<?php echo $p->id  ?>">Edit</a>
+                            <a href="<?php  echo base_url("categoria/delete/". $p->id); ?>">Edit</a>
                            
-                            <form action="<?php  echo base_url("categoria/delete/". $p['id']); ?>">
+                            <form action="<?php  echo base_url("categoria/delete/". $p->id); ?>">
                               <button type="submit">Delete </button>    
                            </form>
                         </td>

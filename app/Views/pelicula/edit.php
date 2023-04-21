@@ -12,11 +12,11 @@
          echo $item;
           
         ?>
-   <form action="/sistemamedico4/public/pelicula/update/<?php echo $pelicula['id'] ?>" method="post">
+   <form action="/sistemamedico4/public/pelicula/update/<?php echo $pelicula->id?>" method="post">
        <label for="titulo">Titulo</label>
-      <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo old('titulo',$pelicula['titulo']) ?>">
+      <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo old('titulo',$pelicula->titulo) ?>">
       <label for="descripcion">Descripcion</label>
-      <textarea name="descripcion" id="descripcion" cols="30" rows="10" ><?php echo $pelicula['descripcion'] ?></textarea>
+      <textarea name="descripcion" id="descripcion" cols="30" rows="10" ><?php echo $pelicula->descripcion?></textarea>
       <button type="submit">Registrar</button>
 
 

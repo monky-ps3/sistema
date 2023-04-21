@@ -8,9 +8,9 @@
 </head>
 <body>
 
-   <form action="/sistemamedico4/public/categoria/update/<?php echo $categoria['id'] ?>" method="post">
+   <form action="/sistemamedico4/public/categoria/update/<?php echo $categoria->id ?>" method="post">
        <label for="titulo">Titulo</label>
-      <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo $categoria['titulo'] ?>">
+      <input type="text" name="titulo" id="titulo" placeholder="titulo" value="<?php echo $categoria->titulo ?>">
      
       <button type="submit">Registrar</button>
 
